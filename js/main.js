@@ -41,11 +41,13 @@ class SchoolWebsite {
   }
 
   // Loading screen with enhanced animations
- // Loading screen with enhanced animations
+ // Loading screen with enhanced animations and zoom effect
   async showLoadingScreen() {
     return new Promise((resolve) => {
       const loadingScreen = document.getElementById("loading-screen");
       if (loadingScreen) {
+        // Add zoom-in animation class
+        loadingScreen.classList.add("zoom-in");
         // Simulate loading time with progress
         let progress = 0;
         const interval = setInterval(() => {
@@ -62,14 +64,18 @@ class SchoolWebsite {
     });
   }
 
-  // Hide loading screen with smooth transition
+  // Hide loading screen with smooth transition and zoom-out effect
   async hideLoadingScreen() {
     return new Promise((resolve) => {
       const loadingScreen = document.getElementById("loading-screen");
       if (loadingScreen) {
+        // Add zoom-out animation class
+        loadingScreen.classList.remove("zoom-in");
+        loadingScreen.classList.add("zoom-out");
         loadingScreen.style.opacity = "0";
         setTimeout(() => {
           loadingScreen.style.display = "none";
+          loadingScreen.classList.remove("zoom-out");
           this.isLoading = false;
           this.triggerEntranceAnimations();
           // Fix for mobile: reset scroll and body style
