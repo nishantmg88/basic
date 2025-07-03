@@ -97,7 +97,7 @@ window.galleryData = [
       np: "मुख्य विद्यालय भवन",
     },
     category: "infrastructure",
-    image: "/nishantmg88/school.jpg",description: {
+    image: "school.jpg",description: {
       en: "Our beautiful main building with modern facilities",
       np: "आधुनिक सुविधासहितको हाम्रो सुन्दर मुख्य भवन",
     },
@@ -109,7 +109,7 @@ window.galleryData = [
       np: "कम्प्युटर प्रयोगशाला",
     },
     category: "infrastructure",
-    image: "/red.jpg",
+    image: "red.jpg",
     description: {
       en: "State-of-the-art computer lab with latest technology",
       np: "नवीनतम प्रविधिसहितको अत्याधुनिक कम्प्युटर प्रयोगशाला",
@@ -122,7 +122,7 @@ window.galleryData = [
       np: "विद्यालय पुस्तकालय",
     },
     category: "infrastructure",
-    image: "/student.jpg",
+    image: "student.jpg",
     description: {
       en: "Well-stocked library with thousands of books",
       np: "हजारौं पुस्तकहरूसहितको राम्रो पुस्तकालय",
@@ -135,7 +135,7 @@ window.galleryData = [
       np: "विज्ञान प्रयोगशाला",
     },
     category: "infrastructure",
-    image: "/red.jpg",
+    image: "red.jpg",
     description: {
       en: "Fully equipped science lab for practical learning",
       np: "व्यावहारिक सिकाइका लागि पूर्ण सुसज्जित विज्ञान प्रयोगशाला",
@@ -148,7 +148,7 @@ window.galleryData = [
       np: "वार्षिक विज्ञान प्रदर्शनी",
     },
     category: "events",
-    image: "../act.jpg",
+    image: "act.jpg",
     description: {
       en: "Students showcasing their innovative science projects",
       np: "विद्यार्थीहरूले आफ्ना नवाचार विज्ञान परियोजनाहरू प्रदर्शन गर्दै",
@@ -161,7 +161,7 @@ window.galleryData = [
       np: "खेलकुद दिवस मनाउने",
     },
     category: "events",
-    image: "/act.jpg",
+    image: "act.jpg",
     description: {
       en: "Annual sports day with various competitions",
       np: "विभिन्न प्रतियोगिताहरूसहितको वार्षिक खेलकुद दिवस",
@@ -174,7 +174,7 @@ window.galleryData = [
       np: "सांस्कृतिक कार्यक्रम",
     },
     category: "events",
-    image: "/act.jpg",
+    image: "act.jpg",
     description: {
       en: "Students performing traditional and modern dances",
       np: "विद्यार्थीहरूले परम्परागत र आधुनिक नृत्य प्रस्तुत गर्दै",
@@ -187,7 +187,7 @@ window.galleryData = [
       np: "स्वतन्त्रता दिवस",
     },
     category: "events",
-    image: "/act.jpg",
+    image: "act.jpg",
     description: {
       en: "Celebrating national independence day with patriotic fervor",
       np: "देशभक्तिको जोशका साथ राष्ट्रिय स्वतन्त्रता दिवस मनाउँदै",
@@ -200,7 +200,7 @@ window.galleryData = [
       np: "कला र शिल्प कक्षा",
     },
     category: "activities",
-    image: "/act.jpg",
+    image: "act.jpg",
     description: {
       en: "Students learning creative arts and crafts",
       np: "विद्यार्थीहरूले सिर्जनशील कला र शिल्प सिक्दै",
@@ -213,7 +213,7 @@ window.galleryData = [
       np: "संगीत कक्षा",
     },
     category: "activities",
-    image: "/red.jpg",
+    image: "red.jpg",
     description: {
       en: "Learning traditional and modern musical instruments",
       np: "परम्परागत र आधुनिक संगीत वाद्ययन्त्रहरू सिक्दै",
@@ -226,7 +226,7 @@ window.galleryData = [
       np: "योग सत्र",
     },
     category: "activities",
-    image: "/red.jpg",
+    image: "red.jpg",
     description: {
       en: "Daily yoga practice for physical and mental wellness",
       np: "शारीरिक र मानसिक स्वास्थ्यका लागि दैनिक योग अभ्यास",
@@ -239,7 +239,7 @@ window.galleryData = [
       np: "पठन सत्र",
     },
     category: "activities",
-    image: "/red.jpg",
+    image: "red.jpg",
     description: {
       en: "Encouraging reading habits among students",
       np: "विद्यार्थीहरूमा पठन बानीलाई प्रोत्साहन गर्दै",
