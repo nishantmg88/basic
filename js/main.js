@@ -41,43 +41,47 @@ class SchoolWebsite {
   }
 
   // Loading screen with enhanced animations
+ // Loading screen with enhanced animations
   async showLoadingScreen() {
     return new Promise((resolve) => {
-      const loadingScreen = document.getElementById("loading-screen")
+      const loadingScreen = document.getElementById("loading-screen");
       if (loadingScreen) {
         // Simulate loading time with progress
-        let progress = 0
+        let progress = 0;
         const interval = setInterval(() => {
-          progress += Math.random() * 15
+          progress += Math.random() * 15;
           if (progress >= 100) {
-            progress = 100
-            clearInterval(interval)
-            setTimeout(resolve, 500)
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(resolve, 500);
           }
-        }, 100)
+        }, 100);
       } else {
-        resolve()
+        resolve();
       }
-    })
+    });
   }
 
   // Hide loading screen with smooth transition
   async hideLoadingScreen() {
     return new Promise((resolve) => {
-      const loadingScreen = document.getElementById("loading-screen")
+      const loadingScreen = document.getElementById("loading-screen");
       if (loadingScreen) {
-        loadingScreen.style.opacity = "0"
+        loadingScreen.style.opacity = "0";
         setTimeout(() => {
-          loadingScreen.style.display = "none"
-          this.isLoading = false
-          this.triggerEntranceAnimations()
-          resolve()
-        }, 500)
+          loadingScreen.style.display = "none";
+          this.isLoading = false;
+          this.triggerEntranceAnimations();
+          // Fix for mobile: reset scroll and body style
+          document.body.style.overflow = "";
+          window.scrollTo(0, 0);
+          resolve();
+        }, 500);
       } else {
-        this.isLoading = false
-        resolve()
+        this.isLoading = false;
+        resolve();
       }
-    })
+    });
   }
 
   // Trigger entrance animations for visible elements
