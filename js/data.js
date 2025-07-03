@@ -149,7 +149,7 @@ window.galleryData = [
       np: "वार्षिक विज्ञान प्रदर्शनी",
     },
     category: "events",
-    image: "/act.jpg",
+    image: "../act.jpg",
     description: {
       en: "Students showcasing their innovative science projects",
       np: "विद्यार्थीहरूले आफ्ना नवाचार विज्ञान परियोजनाहरू प्रदर्शन गर्दै",
