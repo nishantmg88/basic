@@ -97,8 +97,7 @@ window.galleryData = [
       np: "मुख्य विद्यालय भवन",
     },
     category: "infrastructure",
-    image: "/school.jpg",
-    description: {
+    image: "/nishantmg88/school.jpg",description: {
       en: "Our beautiful main building with modern facilities",
       np: "आधुनिक सुविधासहितको हाम्रो सुन्दर मुख्य भवन",
     },
