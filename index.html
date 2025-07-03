@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Sharada Basic School - Excellence in Education</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-placeholder" id="school-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="school-name" data-en="Shree Sharada Basic School" data-np="श्री शारदा आधारभूत विद्यालय">Shree Sharada Basic School</span>
+                    <div class="school-tagline" data-en="Excellence in Education" data-np="शिक्षामा उत्कृष्टता">Excellence in Education</div>
+                </div>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-en="Home" data-np="गृहपृष्ठ">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-np="हाम्रो बारे">About</a>
+                <a href="#principal" class="nav-link" data-en="Principal" data-np="प्रधानाध्यापक">Principal</a>
+                <a href="#gallery" class="nav-link" data-en="Gallery" data-np="ग्यालेरी">Gallery</a>
+                <a href="#notices" class="nav-link" data-en="Notices" data-np="सूचनाहरू">Notices</a>
+                <a href="#results" class="nav-link" data-en="Results" data-np="नतिजाहरू">Results</a>
+                <a href="#admission" class="nav-link" data-en="Admission" data-np="भर्ना">Admission</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-np="सम्पर्क">Contact</a>
+            </div>
+            <div class="nav-controls">
+                <select class="language-selector" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="np">नेपाली</option>
+                </select>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon"></i>
+                </button>
+                <a href="admin-login.html" class="admin-link">
+                    <i class="fas fa-user-shield"></i>
+                </a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="floating-elements">
+                    <div class="floating-icon"><i class="fas fa-book"></i></div>
+                    <div class="floating-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="floating-icon"><i class="fas fa-atom"></i></div>
+                    <div class="floating-icon"><i class="fas fa-palette"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title animate-text" data-en="Welcome to Shree Sharada Basic School" data-np="श्री शारदा आधारभूत विद्यालयमा स्वागत छ">Welcome to Shree Sharada Basic School</h1>
+                <p class="hero-subtitle animate-text" data-en="Nurturing Young Minds for a Brighter Tomorrow" data-np="उज्ज्वल भविष्यका लागि युवा मनको पालनपोषण">Nurturing Young Minds for a Brighter Tomorrow</p>
+                <div class="hero-stats stagger-animation">
+                    <div class="stat-item hover-lift">
+                        <span class="stat-number counter" data-target="1500">0</span>
+                        <span class="stat-label" data-en="Students" data-np="विद्यार्थीहरू">Students</span>
+                    </div>
+                    <div class="stat-item hover-lift">
+                        <span class="stat-number counter" data-target="25">0</span>
+                        <span class="stat-label" data-en="Teachers" data-np="शिक्षकहरू">Teachers</span>
+                    </div>
+                    <div class="stat-item hover-lift">
+                        <span class="stat-number counter" data-target="39">0</span>
+                        <span class="stat-label" data-en="Years" data-np="वर्षहरू">Years</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#admission" class="btn btn-primary btn-animate pulse-on-hover" data-en="Apply Now" data-np="अहिले आवेदन दिनुहोस्">Apply Now</a>
+                    <a href="#about" class="btn btn-secondary btn-animate pulse-on-hover" data-en="Learn More" data-np="थप जान्नुहोस्">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-info">
+                <div class="info-card glass-effect hover-lift">
+                    <div class="info-header">
+                        <i class="fas fa-clock"></i>
+                        <span data-en="Current Time" data-np="हालको समय">Current Time</span>
+                    </div>
+                    <div class="info-content">
+                        <div id="current-time" class="time-display"></div>
+                        <div id="current-date" class="date-display"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-en="About Our School" data-np="हाम्रो विद्यालयको बारेमा">About Our School</h2>
+                <p class="section-subtitle" data-en="Building foundations for lifelong learning" data-np="जीवनभर सिकाइका लागि आधार निर्माण">Building foundations for lifelong learning</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal-left">
+                    <h3 data-en="Our Mission" data-np="हाम्रो मिशन">Our Mission</h3>
+                    <p data-en="To provide quality education that empowers students with knowledge, skills, and values necessary for their personal growth and contribution to society." data-np="विद्यार्थीहरूलाई उनीहरूको व्यक्तिगत विकास र समाजमा योगदानका लागि आवश्यक ज्ञान, सीप र मूल्यहरूसहित सशक्त बनाउने गुणस्तरीय शिक्षा प्रदान गर्नु।">To provide quality education that empowers students with knowledge, skills, and values necessary for their personal growth and contribution to society.</p>
+                
+                    <h3 data-en="Our Vision" data-np="हाम्रो दृष्टिकोण">Our Vision</h3>
+                    <p data-en="To be a leading educational institution that nurtures creative, confident, and responsible citizens of tomorrow." data-np="भोलिका सिर्जनशील, आत्मविश्वासी र जिम्मेवार नागरिकहरूको पालनपोषण गर्ने अग्रणी शैक्षिक संस्था बन्नु।">To be a leading educational institution that nurtures creative, confident, and responsible citizens of tomorrow.</p>
+                
+                    <div class="features stagger-animation">
+                        <div class="feature-item hover-lift">
+                            <i class="fas fa-book"></i>
+                            <span data-en="Quality Education" data-np="गुणस्तरीय शिक्षा">Quality Education</span>
+                        </div>
+                        <div class="feature-item hover-lift">
+                            <i class="fas fa-users"></i>
+                            <span data-en="Experienced Faculty" data-np="अनुभवी शिक्षकहरू">Experienced Faculty</span>
+                        </div>
+                        <div class="feature-item hover-lift">
+                            <i class="fas fa-trophy"></i>
+                            <span data-en="Excellence in Results" data-np="नतिजामा उत्कृष्टता">Excellence in Results</span>
+                        </div>
+                        <div class="feature-item hover-lift">
+                            <i class="fas fa-heart"></i>
+                            <span data-en="Caring Environment" data-np="हेरचाह गर्ने वातावरण">Caring Environment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal-right">
+                    <div class="image-placeholder hover-scale">
+                        <img src="School2.jpg" alt="School Image" class="image-placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal's Message Section -->
+    <section id="principal" class="principal">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Principal's Message</h2>
+                <p class="section-subtitle">Words of wisdom from our leader</p>
+            </div>
+            <div class="principal-content">
+                <div class="principal-image reveal-left">
+                    <div class="image-frame hover-lift">
+                        <img src="prin.jpg" alt="Principal Photo" class="principal-image image-frame">
+                        <div class="image-overlay">
+                            <div class="principal-info">
+                                <h3>Mr. Sanu Kanchha Tamang</h3>
+                                <p>Principal</p>
+                                <p>M.Ed, B.Ed | 20+ Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="principal-message reveal-right">
+                    <div class="message-content glass-effect">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <blockquote id="principal-message-text" class="typewriter-effect">
+                            "Welcome to Shree Sharada Basic School, where we believe every child is unique and capable of achieving greatness. Our mission is to provide quality education that not only focuses on academic excellence but also nurtures the overall personality development of our students.
+
+                            We are committed to creating a learning environment that encourages curiosity, creativity, and critical thinking. Our dedicated team of teachers works tirelessly to ensure that each student receives personalized attention and guidance.
+
+                            At our school, we emphasize the importance of values, discipline, and respect for others. We prepare our students not just for examinations, but for life itself, making them responsible citizens of tomorrow.
+
+                            I invite you to join our school family and be part of this wonderful journey of learning and growth."
+                        </blockquote>
+                        <div class="message-signature">
+                            <div class="signature-line"></div>
+                            <p>Mr. Sanu Kanchha Tamang<br><span>Principal</span></p>
+                        </div>
+                    </div>
+                    <div class="principal-achievements">
+                        <h4>Achievements Under Leadership</h4>
+                        <div class="achievements-grid stagger-animation">
+                            <div class="achievement-item hover-lift">
+                                <i class="fas fa-trophy"></i>
+                                <span>Best School Award 2023</span>
+                            </div>
+                            <div class="achievement-item hover-lift">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>100% Pass Rate</span>
+                            </div>
+                            <div class="achievement-item hover-lift">
+                                <i class="fas fa-star"></i>
+                                <span>Excellence in Education</span>
+                            </div>
+                            <div class="achievement-item hover-lift">
+                                <i class="fas fa-users"></i>
+                                <span>500+ Students Mentored</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">School Gallery</h2>
+                <p class="section-subtitle">Glimpses of our vibrant school life</p>
+            </div>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="activities">Activities</button>
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices Section -->
+    <section id="notices" class="notices">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Notice Board</h2>
+                <p class="section-subtitle">Stay updated with latest announcements</p>
+            </div>
+            <div class="notices-grid" id="notices-grid">
+                <!-- Notices will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Student Results</h2>
+                <p class="section-subtitle">Check your academic performance</p>
+            </div>
+            <div class="results-search">
+                <div class="search-form">
+                    <input type="text" id="student-id" placeholder="Enter Student ID" class="search-input">
+                    <button onclick="searchResults()" class="btn btn-primary btn-animate">Search Results</button>
+                </div>
+                <div id="results-display" class="results-display"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="admission">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Online Admission</h2>
+                <p class="section-subtitle">Join our school family today</p>
+            </div>
+            <div class="admission-form-container">
+                <form id="admission-form" class="admission-form glass-effect">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-name">Student Name *</label>
+                            <input type="text" id="student-name" name="studentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father-name">Father's Name *</label>
+                            <input type="text" id="father-name" name="fatherName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mother-name">Mother's Name *</label>
+                            <input type="text" id="mother-name" name="motherName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="class">Class *</label>
+                            <select id="class" name="class" required>
+                                <option value="">Select Class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="previous-school">Previous School</label>
+                        <input type="text" id="previous-school" name="previousSchool">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit btn-animate">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Get in touch with us</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info reveal-left">
+                    <div class="contact-item hover-lift">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Thakurbaba-8, Shahipur<br>Bardiya, Nepal</p>
+                        </div>
+                    </div>
+                    <div class="contact-item hover-lift">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+977 9868937837</p>
+                        </div>
+                    </div>
+                    <div class="contact-item hover-lift">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@shreesharadaschool.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item hover-lift">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>School Hours</h4>
+                            <p>Sunday - Friday: 10:00 AM - 4:00 PM<br>Saturday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map reveal-right">
+                    <div class="map-placeholder hover-scale">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1707.9991522516607!2d81.29954640485282!3d28.393359796628328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39989d5ffa3158a7%3A0x4ffe55b177ff6!2sSharada%20Basic%20School!5e1!3m2!1sen!2snp!4v1751492002671!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Shree Sharada Basic School</h3>
+                    <p>Committed to providing quality education and nurturing young minds for a better tomorrow.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" class="social-link hover-lift"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/" class="social-link hover-lift"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="social-link hover-lift"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="social-link hover-lift"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#notices">Notices</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#admission">Admission</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Academic</h4>
+                    <ul>
+                        <li><a href="https://moecdc.gov.np/" target="_blank
+                            ">Curriculum</a></li>
+                        <li><a href="#Notices">Events</a></li>
+                        <li><a href="#Gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +977 9868937837</p>
+                    <p><i class="fas fa-envelope"></i> info@shreesharadaschool.edu</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Thakurbaba-8, Shahipur, Bardiya, Nepal</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentDate"></span> Shree Sharada Basic School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Submission</h3>
+            <p>Are you sure you want to submit this admission application?</p>
+            <div class="modal-buttons">
+                <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+                <button onclick="confirmSubmission()" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Application Submitted Successfully!</h3>
+            <p>Thank you for your application. We will contact you soon with further details.</p>
+            <button onclick="closeModal()" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+
+    <!-- Lightbox for Gallery -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <img src="/placeholder.svg" alt="">
+            <div class="lightbox-info">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="school-logo-large">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2>Shree Sharada Basic School</h2>
+            <div class="loading-spinner"></div>
+            <p>Loading Excellence...</p>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

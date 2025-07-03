@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Shree Sharada Basic School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .admin-sidebar {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px 0;
+            position: fixed;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .admin-header {
+            text-align: center;
+            padding: 0 20px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .admin-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .admin-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .admin-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .admin-nav {
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .admin-main {
+            margin-left: 280px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px 30px;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .welcome-text {
+            color: white;
+        }
+
+        .welcome-text h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .welcome-text p {
+            opacity: 0.8;
+            animation: fadeInLeft 0.8s ease 0.2s both;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .dashboard-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dashboard-content.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .stat-card:hover::before {
+            animation: shimmer 1s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            animation: countUp 2s ease;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes countUp {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .add-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            .admin-sidebar.open {
+                left: 0;
+            }
+
+            .admin-main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .main-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="admin-header">
+                <div class="admin-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="admin-title">Admin Panel</div>
+                <div class="admin-subtitle">Shree Sharada School</div>
+            </div>
+
+            <nav class="admin-nav">
+                <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('notices')">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Notices & News</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('results')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Student Results</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('admissions')">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Admissions</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('gallery')">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('settings')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Header -->
+            <div class="main-header">
+                <div class="welcome-text">
+                    <h1>Welcome back, <span id="adminUsername">Admin</span>!</h1>
+                    <p>Manage your school's digital presence</p>
+                </div>
+                <div class="header-actions">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="currentUser">Admin</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="dashboard" class="dashboard-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" id="totalStudents">500</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="stat-number" id="totalNotices">6</div>
+                        <div class="stat-label">Active Notices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-number" id="totalResults">5</div>
+                        <div class="stat-label">Results Published</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-number" id="newAdmissions">12</div>
+                        <div class="stat-label">New Admissions</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Activity</h2>
+                    </div>
+                    <div class="items-list" id="recentActivity">
+                        <!-- Recent activity items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other sections would go here -->
+            <div id="notices" class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">Notices Management</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Manage school notices and announcements here.</p>
+                </div>
+            </div>
+
+            <div id="results" class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">Results Management</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Manage student results here.</p>
+                </div>
+            </div>
+
+            <div id="admissions" class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">Admission Applications</h2>
+                    <p style="color: rgba(255,255,255,0.8);">View and manage admission applications here.</p>
+                </div>
+            </div>
+
+            <div id="gallery" class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">Gallery Management</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Upload and manage school photos here.</p>
+                </div>
+            </div>
+
+            <div id="settings" class="dashboard-content">
+                <div class="content-section">
+                    <h2 class="section-title">System Settings</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Configure school information and system settings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            loadDashboardData();
+        });
+
+        function checkAuthentication() {
+            if (!window.adminAuth || !window.adminAuth.isSessionValid()) {
+                alert('Session expired. Please login again.');
+                window.location.href = 'admin-login.html';
+                return;
+            }
+
+            const session = window.adminAuth.getCurrentSession();
+            if (session) {
+                document.getElementById('adminUsername').textContent = session.username;
+                document.getElementById('currentUser').textContent = session.username;
+            }
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-content').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav item
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Load section-specific data
+            if (sectionId === 'dashboard') {
+                loadDashboardData();
+            }
+        }
+
+        function loadDashboardData() {
+            // Update stats with animation
+            animateCounter('totalStudents', 500);
+            animateCounter('totalNotices', 6);
+            animateCounter('totalResults', 5);
+            animateCounter('newAdmissions', 12);
+            
+            // Load recent activity
+            loadRecentActivity();
+        }
+
+        function animateCounter(elementId, target) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        function loadRecentActivity() {
+            const activityList = document.getElementById('recentActivity');
+            const activities = [
+                { type: 'notice', title: 'New notice added', time: '2 hours ago', icon: 'fas fa-bullhorn' },
+                { type: 'result', title: 'Results published for Class 8', time: '1 day ago', icon: 'fas fa-chart-line' },
+                { type: 'admission', title: 'New admission application', time: '2 days ago', icon: 'fas fa-user-plus' }
+            ];
+
+            activityList.innerHTML = activities.map(activity => `
+                <div class="list-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="${activity.icon}" style="color: #667eea;"></i>
+                            <span style="color: white; font-weight: 600;">${activity.title}</span>
+                        </div>
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">${activity.time}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                if (window.adminAuth) {
+                    window.adminAuth.logout();
+                }
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Auto-logout on session expiry
+        setInterval(checkAuthentication, 60000); // Check every minute
+    </script>
+</body>
+</html>
